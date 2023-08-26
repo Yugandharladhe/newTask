@@ -32,5 +32,5 @@ db.Conversation.belongsTo(db.EndUser, { foreignKey: "enduserId", as: "conversati
 
 
 
-db.sequelize.sync({ force: false });
+db.sequelize.sync({ alter: true });
 module.exports = db
