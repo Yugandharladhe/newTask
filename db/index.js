@@ -27,9 +27,10 @@ db.Chatbot.belongsTo(db.User, { foreignKey: "userId", as: "chatbots" })
 db.Chatbot.hasMany(db.Conversation, { foreignKey: "chatbotId", as: "conversations" })
 db.Conversation.belongsTo(db.Chatbot, { foreignKey: "chatbotId", as: "conversations" })
 
-db.EndUser.hasOne(db.Conversation, { foreignKey: 'enduserId', as: "conversation" })
-db.Conversation.belongsTo(db.EndUser, { foreignKey: 'enduserId', as: "conversation" })
+db.EndUser.hasOne(db.Conversation, { foreignKey: "enduserId", as: "conversation" })
+db.Conversation.belongsTo(db.EndUser, { foreignKey: "enduserId", as: "conversation" })
 
 
-db.sequelize.sync();
+
+db.sequelize.sync({ force: false });
 module.exports = db

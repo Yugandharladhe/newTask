@@ -4,9 +4,9 @@ const Conversation = db.Conversation
 
 const newConversation = async(req, res) => {
     const { chatbotId } = req.params
-    const { question, answer } = req.body
+    const { question, answer, enduserId } = req.body
     try {
-        const data = await Conversation.create({ chatbotId, question, answer });
+        const data = await Conversation.create({ chatbotId, question, answer, enduserId });
         if (data) {
             res.json({ message: "success", data })
         } else {

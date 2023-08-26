@@ -6,15 +6,9 @@ const getSingleEndUser = async(req, res) => {
     const { enduserId } = req.params
     try {
         const data = await EndUser.findAll({
-            attributes: ["name", "email"],
-            include: [{
-                model: Conversation,
-                as: "conversation",
-                attributes: ["question", "answer", "chatbotId"]
-            }],
             where: { enduserId }
         })
-        if (data.length > 0) {
+        if (data) {
             res.json({ message: "Success" }, data)
         } else {
             res.json({ message: "not found" })

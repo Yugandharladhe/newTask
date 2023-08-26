@@ -11,7 +11,7 @@ const getSingleConversation = async(req, res) => {
         if (data.length > 0) {
             res.json({ message: "success", data })
         } else {
-            res.json({ message: "chatbot not found" })
+            res.json({ message: "conversation not found" })
         }
     } catch (err) {
         res.json({ error: err })
