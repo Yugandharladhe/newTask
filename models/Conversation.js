@@ -15,11 +15,15 @@ module.exports = (sequelize, DataTypes) => {
         answer: {
             type: DataTypes.STRING,
         },
+        isCompleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
         chatbotId: {
             type: DataTypes.INTEGER,
             allowNull: true
         },
-        endUserId: {
+        enduserId: {
             type: DataTypes.INTEGER
         }
     }, {

@@ -4,9 +4,11 @@ module.exports = (sequelize, DataTypes) => {
 
     const EndUser = sequelize.define('EndUser', {
         // Model attributes are defined here
-        endUserId: {
+
+        enduserId: {
             type: DataTypes.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         name: {
             type: DataTypes.STRING,

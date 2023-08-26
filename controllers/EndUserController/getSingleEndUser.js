@@ -1,8 +1,28 @@
-const { EndUser } = require("../../db/index")
-
+const db = require("../../db/index")
+const EndUser = db.EndUser
+const Conversation = db.Conversation
 
 const getSingleEndUser = async(req, res) => {
+    const { enduserId } = req.params
+    try {
+        const data = await EndUser.findAll({
+            attributes: ["name", "email"],
+            include: [{
+                model: Conversation,
+                as: "conversation",
+                attributes: ["question", "answer", "chatbotId"]
+            }],
+            where: { enduserId }
+        })
+        if (data.length > 0) {
+            res.json({ message: "Success" }, data)
+        } else {
+            res.json({ message: "not found" })
+        }
 
+    } catch (err) {
+        res.json({ message: err })
+    }
 }
 
 module.exports = getSingleEndUser

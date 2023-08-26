@@ -8,11 +8,6 @@ const getSingleUser = async(req, res) => {
     try {
         const data = await User.findAll({
             attributes: ["name", "email"],
-            include: [{
-                model: Chatbot,
-                as: "chatbots",
-                attributes: ["chatbotId", "name"]
-            }],
             where: { id }
         })
 
